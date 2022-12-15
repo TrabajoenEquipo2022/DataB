@@ -1,0 +1,87 @@
+<div class="d-flex justify-content-center mt-4 mb-4">
+  <div class="border p-4 p-3 mb-5" style="width: 35rem">
+    <h2 class="text-center pb-3 pb-2 mb-4 text-dark border-bottom">REGISTRO</h2>
+
+    <form #userForm="ngForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          placeholder="Ingresa tu nombre"
+          name="firstName"
+          [ngModel]="this.userService.currentUser.firstName"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Apellidos</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="Ingresa tu apellido"
+          name="lastName"
+          [ngModel]="this.userService.currentUser.lastName"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Correo electrónico</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Correo electrónico"
+          name="email"
+          [ngModel]="this.userService.currentUser.email"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Escribe una contraseña"
+          name="password"
+          [(ngModel)]="this.userService.currentUser.password"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Confirmar contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          placeholder="Confirma la contraseña"
+          name="confirmPassword"
+          [(ngModel)]="this.userService.currentUser.confirmPassword"
+        />
+        <div *ngIf="this.userService.currentUser.password">
+          <div
+            class="form-text text-danger"
+            *ngIf="
+              this.userService.currentUser.password !==
+                this.userService.currentUser.confirmPassword;
+              else passwordsMatch
+            "
+          >
+            Las contraseñas no coinciden
+          </div>
+
+          <ng-template #passwordsMatch>
+            <div class="form-text text-success">Las contraseñas coinciden</div>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+
+    <button class="btn btn-success d-flex align-items-center"
+      (click)="this.signUp(userForm)">Registrarme
+    </button>
+  </div>
+</div>

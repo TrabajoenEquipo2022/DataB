@@ -1,0 +1,21 @@
+.img_sice {
+  width: 75%;
+}
+.bg_blue {
+  background-color:  #1e0247 ;
+}
+.img_sice1 {
+  width: 10%;
+  height: 10%;
+  filter: invert(80%);
+}
+.img_sice2 {
+  width: 5%;
+  height: 5%;
+}
+.linea{
+    width: 80%;
+    height: 1px;
+    background-color:#133b1a;
+    margin: auto;
+}

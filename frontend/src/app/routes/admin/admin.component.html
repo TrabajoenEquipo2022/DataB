@@ -1,0 +1,152 @@
+<div class="contenido">
+<div class="tab-content" id="myTabContent">
+      
+  <div class="d-flex justify-content-center mt-1">
+<div class="border p-3 rounded" style="width: 25rem">
+ <h3 class="text-center pb-3">ADMINISTRADOR DE DATOS</h3>
+
+ <div class="mb-3">
+   <input type="hidden" id="_id" name="_id" [ngModel]="this.datosService.currentDatos._id">
+ </div>
+
+ <form #datosForm="ngForm">
+
+   <div class="mb-3">
+     <input type="hidden" id="_id" name="_id" [ngModel]="this.datosService.currentDatos._id">
+   </div>
+
+   <div class="mb-3">
+    <label for="date" class="form-label">Fecha</label>
+    <input
+      type="date"
+      class="form-control"
+      id="date"
+      placeholder=""
+      name="date"
+      [ngModel]="this.datosService.currentDatos.date"
+    />
+  </div>
+
+   <div class="mb-3">
+     <label for="name" class="form-label">Detalle</label>
+     <input
+       type="text"
+       class="form-control"
+       id="name"
+       placeholder="Ingresa el nombre"
+       name="name"
+       [ngModel]="this.datosService.currentDatos.name"
+     />
+   </div>
+   <div class="mb-3">
+     <label for="price" class="form-label">Valor Unitario</label>
+     <input
+       type="text"
+       class="form-control"
+       id="valorunitario"
+       placeholder="Ingresa el valor de cada Producto"
+       name="valorunitario"
+       [ngModel]="this.datosService.currentDatos.valorunitario"
+     />
+   </div>
+
+   <div class="mb-3">
+     <label for="stock" class="form-label">Cantidad</label>
+     <input
+       type="number"
+       class="form-control"
+       id="cantidad"
+       placeholder="Unidades"
+       name="cantidad"
+       [ngModel]="this.datosService.currentDatos.cantidad"
+     />
+  </div>
+  <div class="mb-3">
+    <label for="stock" class="form-label">Stock</label>
+    <input
+      type="number"
+      class="form-control"
+      id="stock"
+      placeholder="Unidades"
+      name="stock"
+      [ngModel]="this.datosService.currentDatos.stock"
+    />
+ </div>
+  <div class="mb-3">
+    <label for="estado" class="form-label">Estado</label>
+    <input
+      type="text"
+      class="form-control"
+      id="estado"
+      placeholder="Ingresa/Egresa"
+      name="estado"
+      [ngModel]="this.datosService.currentDatos.estado"
+    />
+  </div>
+
+
+    
+ </form>
+
+ <button class="btn btn-success d-flex aling-items-center" (click)="this.createDatos(datosForm)">
+   <i class="material-icons">save</i>
+   Guardar
+ </button>
+</div>
+</div>
+
+
+ <section class="visualizador-tareas">
+
+   <div class="organizador btn-group">
+     <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+       Filtrar
+     </button>
+     <ul class="dropdown-menu">
+       <li><a class="dropdown-item" href="#">Más reciente</a></li>
+       <li><a class="dropdown-item" href="#">Más antiguo</a></li>
+       <li><a class="dropdown-item" href="#">Por Fecha</a></li>
+       
+     </ul>
+   
+   </div>
+   
+  
+   <div class="container-fluid px-5">
+     <table class="table">
+       <thead>
+         <tr>
+           <th>Fecha</th>
+           <th>Detalle</th>
+           <th>Valor Unitario</th>
+           <th>Cantidad</th>
+           <th>Stock</th>
+           <th>Estado</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let datos of this.datosService.datos">
+          
+          <td>{{ datos.date }}</td>
+           <td>{{ datos.name }}</td>
+           <td>{{ datos.valorunitario }}</td>
+           <td>{{ datos.cantidad }}</td>
+           <td>{{ datos.stock }}</td>
+           <td>{{ datos.estado }}</td>
+            <td>
+
+              <span class="text-primary" *ngFor="let keyword of datos.keyWords">{{
+                "#" + keyword + " "
+              }}</span>
+
+             <div class="d-flex justify-content-evenly"></div>
+             <i class="material-icons text-danger" style="cursor: pointer;" (click)="this.deleteDatos(datos._id, datos.name)">delete_forever</i>
+             <i class="material-icons text-success" style="cursor: pointer" (click)="this.fillForm(datos)">edit</i>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+
+
+  

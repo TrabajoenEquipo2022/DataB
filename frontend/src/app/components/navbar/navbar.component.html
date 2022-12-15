@@ -1,0 +1,29 @@
+  <nav class="navbar navbar-expand-lg navbar-dark bg-blue">
+    <div class="container-fluid">
+      <img class="logo" src="https://www.zarla.com/images/zarla-cuentas-claras-1x1-2400x2400-20220323-99txfw7r8cvxypcvjpb4.png?crop=1:1,smart&width=250&dpr=2" alt="logo">
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav d-flex justify-content-center w-100">
+          <li class="nav-item">
+            <a class="nav-link fs-5 p-2 text-gold" [routerLink]="['/home']">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 p-2 text-gold" [routerLink]="['/nosotros']">Quienes somos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 p-2 text-gold" [routerLink]="['/admin']">Administrador de datos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 p-2 text-gold" [routerLink]="['/signup']">Registro</a>
+          </li>
+        </ul>
+        <div class="dropdown nav-link fs-6" *ngIf="this.userService.isLoggedIn()">
+          <a class="btn btn-lg dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ this.userService.decodeToken().firstName}}
+          </a>
+        
+        <a class="nav-link text-white" *ngIf="!this.userService.isLoggedIn()" [routerLink]="['/signup']">REGISTRO</a>
+      </div>
+    </div>

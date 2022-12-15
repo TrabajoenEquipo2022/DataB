@@ -1,0 +1,25 @@
+.bg-blue{
+    background-color: #1e0247;
+}
+.Nav_text{
+    margin-left: -10vw;
+}
+.text-gold{
+    color: #f7f4fd;
+}
+.text-gold:hover{
+    color: #1b9431;
+}
+.logo{
+    width: 140px;
+}
+.btn{
+    margin-top: 10px;
+    background-color: #082921;
+    color: rgb(17, 142, 50);
+    height: 7vh;
+    margin-right: 30px;
+}
+.nav link{
+    color: aliceblue;
+}
